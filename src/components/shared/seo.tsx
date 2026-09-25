@@ -37,7 +37,7 @@ export function Seo({
   noindex = false,
 }: SeoProps) {
   const url = siteConfig.url ? `${siteConfig.url}${path}` : undefined;
-  const image = siteConfig.url ? `${siteConfig.url}/api/og` : undefined;
+  const image = siteConfig.url ? `${siteConfig.url}/og.png` : undefined;
 
   return (
     <Head>

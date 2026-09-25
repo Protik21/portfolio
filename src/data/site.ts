@@ -1,6 +1,9 @@
 import { profile } from "@/data/profile";
 
-/** Set NEXT_PUBLIC_SITE_URL (e.g. https://protikbiswas.dev) to enable canonical, og:url and og:image tags. */
+/**
+ * Full public URL including any base path (e.g. https://protik21.github.io/portfolio).
+ * The GitHub Pages workflow sets it; it enables the canonical, og:url and og:image tags.
+ */
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 
 export const siteConfig = {

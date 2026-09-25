@@ -1,5 +1,6 @@
 import { paymentIntegrations } from "@/data/payments";
 import { projects } from "@/data/projects";
+import { withBasePath } from "@/lib/base-path";
 import type { Profile } from "@/types/portfolio";
 
 export const profile: Profile = {
@@ -10,7 +11,7 @@ export const profile: Profile = {
   email: "protikb2003@gmail.com",
   phone: { display: "+91 89102 91178", href: "tel:+918910291178" },
   resume: {
-    href: "/resume/Protik-Biswas-Resume.pdf",
+    href: withBasePath("/resume/Protik-Biswas-Resume.pdf"),
     fileName: "Protik-Biswas-Resume.pdf",
   },
   hero: {

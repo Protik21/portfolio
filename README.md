@@ -8,10 +8,19 @@ Personal portfolio built with **Next.js 16 (Pages Router)**, React 19, TypeScrip
 npm install
 npm run dev        # http://localhost:3000
 npm run typecheck  # tsc --noEmit
-npm run build && npm start
+npm run build      # static site in out/
+npm run preview    # serve out/ locally
 ```
 
-Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the deployed URL. This turns on the canonical URL, `og:url` and the generated social image served from `/api/og`.
+## Deployment (GitHub Pages)
+
+The site is a static export (`output: "export"`), so it needs no server. `.github/workflows/deploy.yml` builds it and publishes `out/` to GitHub Pages on every push to `main`.
+
+One-time setup: in the repository go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**.
+
+The workflow sets `NEXT_PUBLIC_BASE_PATH` (e.g. `/portfolio`) and `NEXT_PUBLIC_SITE_URL` from the repository's Pages settings, so the same code works for a project site, a `username.github.io` repo or a custom domain. Public files referenced with plain `<a>` or `<link>` tags must go through `withBasePath()` from `src/lib/base-path.ts`.
+
+The social preview image is the static file `public/og.png`.
 
 ## Editing content
 
@@ -46,7 +55,8 @@ src/
     ui/         shadcn/ui primitives (Button, Badge, Card)
   data/         all portfolio content
   hooks/        in-view, active-section and scroll hooks
-  pages/        _app, _document, index, 404, api/og
+  lib/          cn() and base-path helpers
+  pages/        _app, _document, index, 404
   styles/       globals.css: design tokens and animations
   types/        shared content types
 ```

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
 import { siteConfig } from "@/data/site";
+import { withBasePath } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 
 import "@/styles/globals.css";
@@ -17,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content={siteConfig.themeColor} />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href={withBasePath("/favicon.svg")} type="image/svg+xml" />
       </Head>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
         <div className={cn(geistSans.variable, geistMono.variable, "font-sans")}>
